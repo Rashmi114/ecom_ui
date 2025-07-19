@@ -6,10 +6,12 @@ import { login } from "../api/auth";
 export default function Login({setAuth}){
     const [userId, setUserId] = useState('')
     const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
 
     const handleLogin = async(e) => {
         e.preventDefault();
+        setLoading(true);
         const credentials = {
             userId,
             password
@@ -27,6 +29,8 @@ export default function Login({setAuth}){
             alert(err.message)
             setUserId('')
             setPassword('')
+        } finally {
+           setLoading(false); 
         }
     }
 
@@ -36,7 +40,9 @@ export default function Login({setAuth}){
             <h2>Login</h2>
             <input type="text" value={userId} placeholder="User ID" onChange={e=> setUserId(e.target.value)}/>
             <input type="password" value={password} placeholder="Password" onChange={e=> setPassword(e.target.value)} />
-            <button onClick={handleLogin}>Login</button>
+            <button onClick={handleLogin} disabled={loading}>
+                {loading ? ( <span className="spinner"></span>) : ("Login")}
+            </button>
             <p>Don't have an account? <Link to="/register">Register Now</Link></p>
         </div>
         </div>

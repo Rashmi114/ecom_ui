@@ -58,3 +58,19 @@
     color: #007bff;
     text-decoration: none;
 }
+
+.spinner {
+  width: 13px;
+  height: 13px;
+  border: 3px dotted #fff;
+  border-top: 3px dotted #28a745;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

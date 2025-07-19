@@ -1,0 +1,55 @@
+/* Header.css */
+.header {
+  width: 98vw;
+  height: 60px;
+  background-color: #f6f8f5;
+  color: #28a745;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #28a745;
+  padding: 0 1rem;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.searchbar {
+  border: none;
+  border-bottom: #28a745 1px solid;
+  width: 40%;
+  padding: 0.5rem;
+  outline: none;
+  color: #28a745;
+  background: transparent;
+}
+.searchbar::placeholder{
+  color: #28a745;
+}
+
+.account {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #f6f8f5;
+  color: #28a745;
+  padding: 10px;
+  border: 1px solid #28a745;
+}
+.dropdown button{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #28a745;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}

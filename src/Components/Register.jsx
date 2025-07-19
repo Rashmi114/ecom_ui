@@ -7,10 +7,12 @@ export default function Register(){
     const [name, setName] = useState('')
     const [userId, setUserId] = useState('')
     const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
 
     const handleRegister = async(e) => {
         e.preventDefault();
+        setLoading(true);
         if(!name || !userId || !password){
             alert('Please fill out all fields')
         } else{
@@ -29,6 +31,8 @@ export default function Register(){
                 navigate('/login')
             } catch (err) {
                 console.error('Registration error:', err.message);
+            } finally {
+                setLoading(false);
             }
         } 
     }
@@ -40,7 +44,7 @@ export default function Register(){
             <input type="text" value={name} placeholder="Username" onChange={e => setName(e.target.value)} />
             <input type="text" value={userId} placeholder="User ID" onChange={e=> setUserId(e.target.value)} />
             <input type="password" value={password} placeholder="Password" onChange={e=> setPassword(e.target.value)} />
-            <button onClick={handleRegister}>Register</button>
+            <button onClick={handleRegister} disabled={loading}>{loading ? ( <span className="spinner"></span>) : ("Register")}</button>
             <p>Already have an account? <Link to="/login">Login</Link></p>
         </div>
         </div>
