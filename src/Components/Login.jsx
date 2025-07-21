@@ -20,6 +20,7 @@ export default function Login({setAuth}){
             const response = await login(credentials);
             console.log('Login Successful: ', response);
             localStorage.setItem("token", response.data.token);
+            localStorage.setItem("userDetails", JSON.stringify(response.data.user))
             setAuth(true)
             setUserId('')
             setPassword('')
